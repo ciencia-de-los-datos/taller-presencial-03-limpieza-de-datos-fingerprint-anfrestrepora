@@ -53,6 +53,7 @@ def generate_cleaned_column(df):
     df = df.sort_values(by=["key", "text"], ascending=[True, True])
     keys = df.drop_duplicates(subset="key", keep="first")
     key_dict = dict(zip(keys["key"], keys["text"]))
+    
     df["cleaned"] = df["key"].map(key_dict)
 
     return df
